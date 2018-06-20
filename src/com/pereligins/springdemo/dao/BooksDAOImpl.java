@@ -1,57 +1,57 @@
 package com.pereligins.springdemo.dao;
 
-import com.pereligins.springdemo.entity.Customer;
+import com.pereligins.springdemo.entity.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
-public class CustomerDAOImpl implements CustomerDAO {
+public class BooksDAOImpl implements BooksDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Customer> getCustomers() {
+    public List<Book> getBooks() {
 
         Session currentSession = sessionFactory.getCurrentSession();
 
-        Query<Customer> query = currentSession.createQuery("from Customer order by lastName", Customer.class);
+        Query<Book> query = currentSession.createQuery("from Book", Book.class);
 
-        List<Customer> customers = query.getResultList();
+        List<Book> books = query.getResultList();
 
-        return customers;
+        return books;
     }
 
     @Override
-    public void saveCustomer(Customer customer) {
+    public void saveBook(Book book) {
 
         Session session = sessionFactory.getCurrentSession();
 
-        session.saveOrUpdate(customer);
+        session.saveOrUpdate(book);
 
     }
 
     @Override
-    public Customer getCustomer(int theId) {
+    public Book getBook(int theId) {
 
         Session session = sessionFactory.getCurrentSession();
 
-        Customer customer = session.get(Customer.class, theId);
+        Book book = session.get(Book.class, theId);
 
-        return customer;
+        return book;
     }
 
     @Override
-    public void deleteCustomer(int theId) {
+    public void deleteBook(int theId) {
+
         Session session = sessionFactory.getCurrentSession();
 
-        Query query = session.createQuery("delete from Customer where id = :idParam");
+        Query query = session.createQuery("delete from Book where id = :idParam");
 
         query.setParameter("idParam", theId);
 
