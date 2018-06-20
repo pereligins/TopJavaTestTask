@@ -2,10 +2,10 @@
   <artifact type="exploded-war" name="UdemyWebApp:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/UdemyWebApp_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="UdemyWebApp/web/Web" />
+      <element id="javaee-facet-resources" facet="JavarushTestTask/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="UdemyWebApp" />
+          <element id="module-output" name="JavarushTestTask" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="mysql-connector-java-5.1.39-bin" />
