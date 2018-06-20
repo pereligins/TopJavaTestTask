@@ -37,4 +37,10 @@ public class BooksServiceImpl implements BooksService {
     public void deleteBook(int theId) {
         booksDAO.deleteBook(theId);
     }
+
+    @Override
+    @Transactional
+    public void setRead(int theId, boolean read) {
+        booksDAO.setRead(theId, read);
+    }
 }

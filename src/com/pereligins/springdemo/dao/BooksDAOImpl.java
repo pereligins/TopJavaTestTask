@@ -55,6 +55,19 @@ public class BooksDAOImpl implements BooksDAO {
 
         query.setParameter("idParam", theId);
 
+
+        query.executeUpdate();
+    }
+
+    @Override
+    public void setRead(int theId, boolean read) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query query = session.createQuery("update Book set readAlready = :read where id = :idParam");
+
+        query.setParameter("idParam", theId);
+        query.setParameter("read", read);
+
         query.executeUpdate();
     }
 }

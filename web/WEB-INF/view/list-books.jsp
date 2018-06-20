@@ -50,6 +50,10 @@
                     <c:param name="bookId" value="${tempBook.id}"></c:param>
                 </c:url>
 
+                <c:url var="readLink" value="/books/setRead">
+                    <c:param name="bookId" value="${tempBook.id}"></c:param>
+                </c:url>
+
                 <tr>
                     <td>${tempBook.title}</td>
                     <td>${tempBook.description}</td>
@@ -60,8 +64,10 @@
                     <td>
                         <a href="${updateLink}">Update</a>
                         |
+                        <a href="${readLink}" onclick="if(!(confirm('Mark as readed?'))) return false;">Read</a>
+                        |
                         <a href="${deleteLink}"
-                            onclick="if(!(confirm('Delete customer?'))) return false;">Delete</a>
+                            onclick="if(!(confirm('Delete book?'))) return false;">Delete</a>
                     </td>
                 </tr>
             </c:forEach>

@@ -39,6 +39,8 @@ public class BooksController {
     @PostMapping("/saveBook")
     public String savebook(@ModelAttribute("book") Book book ) {
 
+        book.setReadAlready(false);
+
         booksService.saveBook(book);
 
         return "redirect:/books/list";
@@ -58,6 +60,13 @@ public class BooksController {
     @GetMapping("/delete")
     public String deleteBook(@RequestParam("bookId") int theId) {
         booksService.deleteBook(theId);
+
+        return "redirect:/books/list";
+    }
+
+    @GetMapping("/setRead")
+    public String setRead(@RequestParam("bookId") int theId) {
+        booksService.setRead(theId, true);
 
         return "redirect:/books/list";
     }
